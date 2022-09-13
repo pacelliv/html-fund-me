@@ -17,7 +17,7 @@ async function connect() {
 }
 
 async function fund() {
-    const ethAmount = "100"
+    const ethAmount = "0.5"
     console.log(`Funding with ${ethAmount}...`)
     if (typeof window.ethereum !== "undefined") {
         //I need a provider / conection to the blockchain
@@ -30,12 +30,21 @@ async function fund() {
             const transactionResponse = await contract.fund({
                 value: ethers.utils.parseEther(ethAmount),
             })
+            await listenForTransactionMine(transactionResponse, provider)
         } catch (error) {
             console.log(error)
         }
     }
 }
 
-//fund
-
-//withdraw
+function listenForTransactionMine(transactionResponse, provider) {
+    console.log(`Mining ${transactionResponse.hash}`)
+    return new Promise((resolve, reject) => {
+        provider.once(transactionResponse.hash, (transactionReceipt) => {
+            console.log(
+                `Completed with ${transactionReceipt.confirmations} confirmations. `
+            )
+            resolve()
+        })
+    })
+}
