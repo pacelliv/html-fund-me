@@ -17,7 +17,7 @@ async function connect() {
 }
 
 async function fund() {
-    const ethAmount = "0.1"
+    const ethAmount = "100"
     console.log(`Funding with ${ethAmount}...`)
     if (typeof window.ethereum !== "undefined") {
         //I need a provider / conection to the blockchain
