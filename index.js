@@ -1,23 +1,27 @@
 import { ethers } from "./ethers-5.6.esm.min.js"
 import { abi, contractAddress } from "./constants.js"
 
-const connectBtn = document.getElementById("connect-btn")
-const fundBtn = document.getElementById("fund-btn")
+const connectBtn = document.getElementById("connectButton")
+const fundBtn = document.getElementById("fundButton")
 
 connectBtn.onclick = connect
 fundBtn.onclick = fund
 
 async function connect() {
-    if (typeof window.ethereum !== "undefined") {
-        await window.ethereum.request({ method: "eth_requestAccounts" })
-        connectBtn.innerHTML = "Connected!"
-    } else {
-        connectBtn.innerHTML = "Please install Metamask!"
+  if (typeof window.ethereum !== "undefined") {
+    try {
+      await ethereum.request({ method: "eth_requestAccounts" })
+    } catch (error) {
+      console.log(error)
     }
+    connectButton.innerHTML = "Connected"
+  } else {
+    connectButton.innerHTML = "Please install MetaMask"
+  }
 }
 
 async function fund() {
-    const ethAmount = "0.5"
+    const ethAmount = "0.1"
     console.log(`Funding with ${ethAmount}...`)
     if (typeof window.ethereum !== "undefined") {
         //I need a provider / conection to the blockchain
@@ -34,7 +38,9 @@ async function fund() {
         } catch (error) {
             console.log(error)
         }
-    }
+    } else {
+    fundButton.innerHTML = "Please install MetaMask"
+  }
 }
 
 function listenForTransactionMine(transactionResponse, provider) {
