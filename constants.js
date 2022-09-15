@@ -17,10 +17,6 @@ export const abi = [
         type: "error",
     },
     {
-        stateMutability: "payable",
-        type: "fallback",
-    },
-    {
         inputs: [],
         name: "MINIMUM_USD",
         outputs: [
@@ -117,9 +113,5 @@ export const abi = [
         outputs: [],
         stateMutability: "nonpayable",
         type: "function",
-    },
-    {
-        stateMutability: "payable",
-        type: "receive",
     },
 ]
