@@ -1,4 +1,5 @@
-export const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+export const contractAddress = "0x1af8f8cb4d126626a64475b0f31865a7053bc9c6" // Address in goerli
+// export const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" // hardhat node adress
 export const abi = [
     {
         inputs: [
@@ -15,6 +16,10 @@ export const abi = [
         inputs: [],
         name: "FundMe__NotOwner",
         type: "error",
+    },
+    {
+        stateMutability: "payable",
+        type: "fallback",
     },
     {
         inputs: [],
@@ -113,5 +118,9 @@ export const abi = [
         outputs: [],
         stateMutability: "nonpayable",
         type: "function",
+    },
+    {
+        stateMutability: "payable",
+        type: "receive",
     },
 ]
