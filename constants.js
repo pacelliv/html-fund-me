@@ -1,11 +1,11 @@
 export const contractAddress = "0x1af8f8cb4d126626a64475b0f31865a7053bc9c6" // Address in goerli
-// export const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" // hardhat node adress
+// export const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" // hardhat node address
 export const abi = [
     {
         inputs: [
             {
                 internalType: "address",
-                name: "s_priceFeedAddress",
+                name: "priceFeedAddress",
                 type: "address",
             },
         ],
@@ -102,6 +102,19 @@ export const abi = [
     {
         inputs: [],
         name: "getPriceFeed",
+        outputs: [
+            {
+                internalType: "contract AggregatorV3Interface",
+                name: "",
+                type: "address",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "s_priceFeed",
         outputs: [
             {
                 internalType: "contract AggregatorV3Interface",
